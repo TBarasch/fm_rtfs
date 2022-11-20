@@ -152,9 +152,12 @@ cython_debug/
 #.idea/
 
 # Data files and folders
-Data/
+data/
 *.csv
 *.rtf
 
 # Jupyter
 .ipynb_checkpoints/
+
+# Dev
+dev/
