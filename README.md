@@ -34,3 +34,11 @@ The process can take a bit depending on the size and amount of RTF files.
 When its done, a new folder named `Converted_CSV` will be created - if it doesnt already exist, in which the csv files will be saved.
 
 
+### Preprocessing:
+
+1. Hight and Weight: Remove the units (i.e 'cm'/'lb' etc') from the column values and appended to the column name
+2. Salary: remove the currency symbol from column values and append to column name, then remove 
+3. Transfer Value: Remove the currency denotion, 
+
+
+
