@@ -97,7 +97,7 @@ class RtfToCsv:
             temp[i] = temp[i].str.lstrip().str.rstrip()
             for key, val in d.items():
                 temp[i] = temp[i].str.replace(key,val,regex=True)
-                temp[i] = temp[i].str.replace(pat=r"(\d*)[.,](\d)0(0*)", repl=r"\1\2\3")
+                temp[i] = temp[i].str.replace(pat=r"(\d*)[.,](\d)0(0*)", repl=r"\1\2\3") # TODO: dynamically determine digits after deliminator
         temp['Transfer_Value_Upper'] = temp['Transfer_Value_Upper'].fillna(temp['Transfer_Value_Lower'])
 
         # add new cols to col name dict
