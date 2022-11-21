@@ -89,19 +89,21 @@ class RtfToCsv:
         """
         """
         new_cols = ['Transfer_Value_Lower','Transfer_Value_Upper']
-        d = {'K':'000', 'M': '000000', 'B':'000000000', ".":'', ",":''}
+        d = {'K':'000', 'M': '000000', 'B':'000000000'}
         d[cur_symb] = ""
         temp = pd.DataFrame(self.df['Transfer_Value'].str.split('-').values.tolist(), columns=new_cols)
+
         for i in temp.columns:
             temp[i] = temp[i].str.lstrip().str.rstrip()
             for key, val in d.items():
                 temp[i] = temp[i].str.replace(key,val,regex=True)
+                temp[i] = temp[i].str.replace(pat=r"(\d*)[.,](\d)0(0*)", repl=r"\1\2\3") # TODO: dynamically determine digits after deliminator
         temp['Transfer_Value_Upper'] = temp['Transfer_Value_Upper'].fillna(temp['Transfer_Value_Lower'])
 
         # add new cols to col name dict
         self.df = pd.concat([self.df.drop(columns='Transfer_Value'), temp],axis=1)
         for i in new_cols:
-            self.col_names[i] = i
+            self.col_names[i] = i + "_" + cur_symb
         del self.col_names['Transfer_Value']
 
         
@@ -117,6 +119,8 @@ if __name__ == '__main__':
         warnings.simplefilter(action='ignore', category=FutureWarning)
         # Warning-causing lines of code here
         files = [f for f in listdir() if f[-4:] == '.rtf']
+        if not path.exists("Converted_CSV"):
+                makedirs("Converted_CSV")
         for f in files:
             rtf_data = RtfToCsv(file_name=f)
             rtf_data.load_data()
@@ -125,6 +129,4 @@ if __name__ == '__main__':
             rtf_data.get_units(['Salary', 'Height', 'Weight'])
             rtf_data.process_transfer_value(cur_symb=rtf_data.monetary_symbol)
             rtf_data.df = rtf_data.df.rename(columns=rtf_data.col_names)
-            if not path.exists("Converted_CSV"):
-                makedirs("Converted_CSV")
             rtf_data.df.to_csv(f"Converted_CSV/{f[:-4]}.csv", index=False)
