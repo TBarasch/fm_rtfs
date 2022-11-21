@@ -2,8 +2,35 @@
 
 This is an incoplete project, and intended to be used for preprocessing and saving RTF files extracted from football manager as csv's, for the purpose of personal and non-commercial use.
 
+If you come across a bug, or want to request improvments to the functionality please open a [Issue](https://github.com/TBarasch/fm_rtfs/issues) by clicking the green *New Issue* button on the right.
+
 ### Useage:
 
-##### Downloading
-If you only intend to run the script and not contribute to the code, please only download the code (and do not clone), instructions on how to download a zipped folder can be found (here)[https://sites.northwestern.edu/researchcomputing/resources/downloading-from-github/] 
+in the folder `example_rtf`, you will find a sample `.rtf` file on which you can test the code to see if it works. to do so please move it into the same location as the `RTF_to_CSV.py` file, and run the python code.
+
+#### Downloading
+If you only intend to run the script and not contribute to the code, please only download the code (and do not clone), instructions on how to download a zipped folder can be found [here](https://sites.northwestern.edu/researchcomputing/resources/downloading-from-github/)
  
+#### Useage
+Download and unzip the folder to any location, for the purpose of only running the code and converting the files in your local computer, only the file `RTF_to_CSV.py` is needed.
+
+- To start place the python file in the same directory (folder) as the RTF's you want to convert.
+
+
+##### To run the code from terminal:
+
+1. `cd` into the dir in which you placed the `RTF_to_CSV.py` and RTF files
+2. run the line `python RTF_to_CSV.py`
+
+##### To run from IDE:
+
+1. Open your IDE of choice (PyCharm, VS Code, Other...)
+2. Make sure the working directory is set to the folder in which you placed the `RTF_to_CSV.py` and RTF files
+3. Open the  `RTF_to_CSV.py` file.
+4. Run the script (typically by pressing on a play looking button on the top right).
+
+The process can take a bit depending on the size and amount of RTF files.
+
+When its done, a new folder named `Converted_CSV` will be created - if it doesnt already exist, in which the csv files will be saved.
+
+
