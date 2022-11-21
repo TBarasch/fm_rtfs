@@ -153,11 +153,17 @@ cython_debug/
 
 # Data files and folders
 data/
+Converted_CSV/
 *.csv
 *.rtf
+!example.rtf
+
 
 # Jupyter
 .ipynb_checkpoints/
 
 # Dev
 dev/
+
+# Other
+.DS_store
