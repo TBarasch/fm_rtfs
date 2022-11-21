@@ -38,7 +38,7 @@ When its done, a new folder named `Converted_CSV` will be created - if it doesnt
 
 1. Hight and Weight: Remove the units (i.e 'cm'/'lb' etc') from the column values and appended to the column name
 2. Salary: remove the currency symbol from column values and append to column name, then remove 
-3. Transfer Value: Remove the currency denotion, 
+3. Transfer Value: Remove the currency denotion from values, split into two columns of `Transfer_Value_Lower` and `Transfer_Value_Upper`, added currency symbol to column name, removing thousends and millions trailing letter (i.e k in 10k and m in 10m) and replacing with appropriate number of zeros as well as deliminating comma/period
 
 
 
